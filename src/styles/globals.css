@@ -1,0 +1,120 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Gaegu', 'Jua', 'Comic Sans MS', cursive;
+    font-weight: 700;
+    color: #8a4a7a;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 2px, transparent 2.5px) 0 0 / 22px 22px,
+      linear-gradient(#ffc2de, #ffd8ec 65%, #e6f8d4);
+    background-color: #ffd0e6;
+    user-select: none;
+  }
+}
+
+@layer components {
+  .bubble {
+    @apply font-jua font-normal text-cream;
+    -webkit-text-stroke: 10px #ff9ccb;
+    paint-order: stroke fill;
+    text-shadow: 0 5px 0 #b9dcff, 0 9px 0 #93b4e6;
+    text-align: center;
+    line-height: 1.05;
+    letter-spacing: 1px;
+  }
+
+  .panel {
+    @apply bg-cream border-[5px] border-teal rounded-[28px];
+    box-shadow: 0 0 0 4px #fff, 0 9px 0 4px rgba(91, 179, 184, 0.67);
+  }
+
+  .btn {
+    @apply font-jua font-normal text-white bg-pink-bright border-4 border-white rounded-full py-3 px-7 cursor-pointer transition-all;
+    box-shadow: 0 6px 0 #d94f8e;
+  }
+
+  .btn:active {
+    @apply translate-y-[5px];
+    box-shadow: 0 1px 0 #d94f8e;
+  }
+
+  .btn:disabled {
+    @apply opacity-35 cursor-not-allowed;
+  }
+
+  .tag {
+    @apply inline-block font-jua font-normal text-[15px] bg-white text-pink-bright border-4 border-pink-bright rounded-full py-1 px-3.5 -rotate-3;
+    letter-spacing: 2px;
+  }
+}
+
+/* Safe area for notch */
+body {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Book fixed size - with scaling for mobile (inspired by old card code) */
+.book-container {
+  width: 800px;
+  height: 500px;
+}
+
+/* Tablet - scale down like old code resize */
+@media screen and (max-width: 1024px) {
+  .book-container {
+    width: 700px;
+    height: 450px;
+  }
+}
+
+/* Mobile landscape and tablets - gradual resize */
+@media screen and (max-width: 768px) {
+  .book-container {
+    width: 600px;
+    height: 400px;
+  }
+}
+
+/* Mobile portrait - resize like old code (280x350 approach) */
+@media screen and (max-width: 640px) {
+  .book-container {
+    width: 560px;
+    height: 400px;
+  }
+}
+
+/* Small mobile - closer to old code 250x320 */
+@media screen and (max-width: 480px) {
+  .book-container {
+    width: 500px;
+    height: 360px;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 380px) {
+  .book-container {
+    width: 450px;
+    height: 340px;
+  }
+}

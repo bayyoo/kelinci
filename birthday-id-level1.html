@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffc9e2">
+<title>Birthday ID - Level 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fff8d6;--teal:#7fd3d6;--purple:#8a4a7a;--pink:#ff9ccb;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;height:100%;overflow:hidden;font-family:'Gaegu','Jua','Comic Sans MS',cursive;font-weight:700;color:var(--purple);
+background:radial-gradient(circle,#fff9 2px,transparent 2.5px) 0 0/22px 22px,linear-gradient(#ffc2de,#ffd8ec 65%,#e6f8d4);background-color:#ffd0e6;user-select:none}
+.bubble{font-family:'Jua','Baloo 2',sans-serif;font-weight:400;color:var(--cream);-webkit-text-stroke:10px var(--pink);paint-order:stroke fill;
+text-shadow:0 5px 0 #b9dcff,0 9px 0 #93b4e6;text-align:center;line-height:1.05;letter-spacing:1px}
+.panel{background:var(--cream);border:5px solid var(--teal);border-radius:28px;box-shadow:0 0 0 4px #fff,0 9px 0 4px #5bb3b8aa}
+.btn{font:400 22px 'Jua',sans-serif;color:#fff;background:#ff7eb6;border:4px solid #fff;border-radius:999px;padding:12px 28px;
+box-shadow:0 6px 0 #d94f8e;cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 #d94f8e}
+.scr{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
+.hide{display:none!important}
+.tag{transform:rotate(-3deg);display:inline-block;font:400 15px 'Jua',sans-serif;background:#fff;color:#ff6aa9;border:3px solid #ffb6d6;border-radius:999px;padding:4px 14px;letter-spacing:2px}
+.fl{position:fixed;pointer-events:none;animation:fl 5s ease-in-out infinite;z-index:0}
+@keyframes fl{50%{transform:translateY(-14px) rotate(14deg)}}
+.scr{z-index:1}
+#num{font-size:min(46vw,190px)}
+.pop{animation:pop .6s}
+@keyframes pop{40%{transform:scale(1.25) rotate(-4deg)}}
+#hb h1{font-size:clamp(40px,12vw,64px);margin:0}
+.sub{font-size:22px;text-align:center;max-width:300px}
+/* book */
+#stage{position:relative;width:min(96vw,820px);height:min(72vh,560px);perspective:2400px;transition:transform .95s cubic-bezier(.45,.05,.25,1)}
+#stage.c{transform:translateX(-25%)}#stage.e{transform:translateX(25%)}
+.base{position:absolute;top:-7px;bottom:-10px;background:#ff9ccb;border:4px solid #fff;z-index:0;transition:opacity .5s}
+.base.l{left:-7px;width:calc(50% + 7px);border-radius:32px 0 0 32px}.base.r{right:-7px;width:calc(50% + 7px);border-radius:0 32px 32px 0}
+.c .base.l,.e .base.r{opacity:0}
+.leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transition:transform .95s cubic-bezier(.45,.05,.25,1),z-index 0s .475s}
+.leaf.f{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;background:var(--cream);border:5px solid var(--teal);box-shadow:0 8px 0 #5bb3b8aa}
+.face.r{border-radius:3px 26px 26px 3px;border-left-width:2px}
+.face.b{transform:rotateY(180deg);border-radius:26px 3px 3px 26px;border-right-width:2px}
+.face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#0003,transparent 16%)}
+.face.b::after{background:linear-gradient(270deg,#0003,transparent 16%)}
+.bar{background:var(--teal);color:#fff;font:400 14px 'Jua',sans-serif;display:flex;justify-content:space-between;padding:6px 12px;letter-spacing:1px;white-space:nowrap}
+.bar span:first-child::before{content:"● ● ";color:#fff9;letter-spacing:0}
+.body{background:repeating-linear-gradient(transparent 0 29px,#bfe6ea 29px 31px);background-position:0 16px;flex:1;padding:16px 18px;font-size:clamp(16px,4.4vw,22px);line-height:31px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.body h2{font:400 clamp(22px,6vw,30px) 'Jua',sans-serif;margin:0;color:#ff6aa9;line-height:36px}
+.body p{margin:0}
+.sign{margin-top:auto;text-align:right;font-size:26px;color:#ff6aa9}
+.deco{align-items:center;justify-content:center;text-align:center}
+.cover{background:linear-gradient(#fff3b0,#ffe1ef);align-items:center;justify-content:center;gap:12px;text-align:center;padding:16px;border-color:#ff9ccb}
+.cover svg{width:55%;height:auto}
+.cover .bubble{font-size:clamp(36px,10vw,56px);-webkit-text-stroke:8px #ff9ccb}
+.hint{animation:blink 1.4s infinite;font-size:19px}
+@keyframes blink{50%{opacity:.35}}
+.tip{display:none;font-size:15px}
+@media(orientation:portrait){.tip{display:inline-block}}
+#nav{display:flex;align-items:center;gap:16px}
+.rb{width:52px;height:52px;border-radius:50%;border:4px solid #fff;background:#8fc6f0;color:#fff;font:400 24px 'Jua';box-shadow:0 5px 0 #5f95c8;cursor:pointer}
+.rb:active{transform:translateY(4px);box-shadow:none}
+.rb[disabled]{opacity:.35}
+#cv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="star" viewBox="0 0 50 50"><polygon points="25,4 31,19 47,19 34,29 39,45 25,35 11,45 16,29 3,19 19,19" fill="#fff3a0" stroke="#ff8fc0" stroke-width="4" stroke-linejoin="round"/></symbol>
+<symbol id="cloud" viewBox="0 0 50 50"><path d="M12 38a9 9 0 0 1 2-17 12 12 0 0 1 23-2 10 10 0 0 1 2 19z" fill="#d6ecff" stroke="#8fb8ea" stroke-width="4" stroke-linejoin="round"/></symbol>
+<symbol id="heart" viewBox="0 0 50 50"><path d="M25 44C8 31 4 20 11 12c6-6 13-2 14 3 1-5 8-9 14-3 7 8 3 19-14 32z" fill="#ff9ccb" stroke="#e0559a" stroke-width="4" stroke-linejoin="round"/></symbol>
+<symbol id="spark" viewBox="0 0 50 50"><path d="M25 3c2 12 6 18 22 22-16 4-20 10-22 22-2-12-6-18-22-22 16-4 20-10 22-22z" fill="#fff" stroke="#8fc6f0" stroke-width="4" stroke-linejoin="round"/></symbol>
+<symbol id="tofu" viewBox="0 0 100 100"><ellipse cx="14" cy="38" rx="11" ry="17" fill="#fffdf0" stroke="#e8a6c4" stroke-width="4"/><ellipse cx="86" cy="38" rx="11" ry="17" fill="#fffdf0" stroke="#e8a6c4" stroke-width="4"/><rect x="12" y="16" width="76" height="72" rx="28" fill="#fffdf0" stroke="#e8a6c4" stroke-width="4"/><circle cx="36" cy="54" r="4.5" fill="#6b3b6e"/><circle cx="64" cy="54" r="4.5" fill="#6b3b6e"/><ellipse cx="26" cy="65" rx="7" ry="4.5" fill="#ffb3cf"/><ellipse cx="74" cy="65" rx="7" ry="4.5" fill="#ffb3cf"/><path d="M44 63q6 6 12 0" fill="none" stroke="#6b3b6e" stroke-width="3.5" stroke-linecap="round"/></symbol>
+</defs></svg>
+<svg class="fl" width="44" height="44" style="top:5%;left:7%;rotate:-12deg;animation-delay:0s"><use href="#star"/></svg><svg class="fl" width="34" height="34" style="top:11%;right:8%;rotate:10deg;animation-delay:1s"><use href="#heart"/></svg><svg class="fl" width="36" height="36" style="bottom:9%;left:9%;rotate:0deg;animation-delay:2s"><use href="#spark"/></svg><svg class="fl" width="30" height="30" style="bottom:13%;right:7%;rotate:16deg;animation-delay:0.5s"><use href="#star"/></svg><svg class="fl" width="54" height="54" style="top:42%;left:2%;rotate:0deg;animation-delay:1.5s"><use href="#cloud"/></svg><svg class="fl" width="28" height="28" style="top:48%;right:4%;rotate:0deg;animation-delay:2.5s"><use href="#spark"/></svg><svg class="fl" width="46" height="46" style="top:22%;right:3%;rotate:12deg;animation-delay:0.8s"><use href="#tofu"/></svg>
+<div id="intro" class="scr">
+  <div id="start" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+    <span class="tag">BIRTHDAY ID · LEVEL 1</span>
+    <div class="panel" style="padding:26px 22px;text-align:center"><svg width="96" height="96"><use href="#tofu"/></svg><div class="sub">Ada yang spesial buat kamu, <br>[Nama] ✨</div></div>
+    <button class="btn" id="go">Tap untuk mulai</button>
+  </div>
+  <div id="count" class="hide"><div id="num" class="bubble">0</div></div>
+  <div id="hb" class="hide" style="flex-direction:column;align-items:center;gap:22px">
+    <span class="tag">LEVEL 1 · UNLOCKED</span>
+    <h1 class="bubble">Happy 18th<br>Birthday,<br>[Nama]!</h1>
+    <button class="btn" id="open">Buka Buku 📖</button>
+  </div>
+</div>
+
+<div id="bookScr" class="scr hide">
+  <div id="stage"></div>
+  <div id="nav"><button class="rb" id="pv">◀</button><span id="pi" class="tag">1 / 1</span><button class="rb" id="nx">▶</button></div>
+<span class="tag tip">tips: miringkan HP biar bukunya lebih lebar</span>
+</div>
+<canvas id="cv"></canvas>
+
+<!-- Audio Background Music -->
+<audio id="bgMusic" loop>
+  <source src="background-music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Auto-play background music
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.3; // Set volume 30% (bisa diubah 0.0 - 1.0)
+
+// Try to autoplay immediately
+bgMusic.play().catch(() => {
+  // If autoplay blocked, play on first user interaction
+  const playOnInteraction = () => {
+    bgMusic.play();
+    document.removeEventListener('click', playOnInteraction);
+    document.removeEventListener('touchstart', playOnInteraction);
+  };
+  document.addEventListener('click', playOnInteraction);
+  document.addEventListener('touchstart', playOnInteraction);
+});
+
+const $=s=>document.querySelector(s);
+// ====== EDIT PESAN DI SINI ======
+const msgs=[
+ {t:'Dear [Nama] 💌',b:['Selamat ulang tahun yang ke-18! Hari ini kamu resmi masuk Level 1.','Ini isi pesan pembuka dari gue. Ganti teks ini ya.']},
+ {t:'Buat kamu',b:['Ini halaman kedua. Tulis ucapan, kenangan, atau hal yang pengen kamu bilang ke dia.']},
+ {t:'Makasih ya',b:['Makasih udah jadi kamu. Isi pesan ketiga di sini.']},
+ {t:'Harapan gue',b:['Semoga kamu sehat, bahagia, dan semua yang kamu mau tercapai.']},
+ {t:'Terakhir...',b:['Sampai ketemu di Level 2. Gue janji bakal ada di sini. 🤍'],sign:'— [Nama Lo]'}
+];
+// ================================
+const st=$('#stage');let cur=0;
+const deco=(t,s)=>`<div class="body deco"><svg width="90" height="90"><use href="#tofu"/></svg><h2>${t}</h2><p>${s}</p></div>`;
+const pgH=(m,i)=>m?`<div class="bar"><span>BIRTHDAY.EXE</span><span>${i}/${msgs.length}</span></div><div class="body"><h2>${m.t}</h2>${m.b.map(x=>`<p>${x}</p>`).join('')}${m.sign?`<div class="sign">${m.sign}</div>`:''}</div>`:deco('♡','');
+const cover='<svg width="120" height="120"><use href="#tofu"/></svg><div class="bubble">Buku</div><div class="hint">tap untuk membuka</div>';
+const lv=[{f:cover,b:deco('Milik','[Nama]')}];
+for(let i=0;i<msgs.length;i+=2)lv.push({f:pgH(msgs[i],i+1),b:pgH(msgs[i+1],i+2)});
+const L=lv.length;
+st.innerHTML='<div class="base l"></div><div class="base r"></div>'+lv.map((l,i)=>`<div class="leaf"><div class="face r${i?'':' cover'}">${l.f}</div><div class="face b">${l.b}</div></div>`).join('');
+const lf=[...st.querySelectorAll('.leaf')];
+function show(){lf.forEach((p,i)=>{const f=i<cur;p.classList.toggle('f',f);p.style.zIndex=f?i+1:L-i});
+ st.className=cur===0?'c':cur===L?'e':'';$('#pi').textContent=cur===0?'Sampul':cur+' / '+L;$('#pv').disabled=cur===0;$('#nx').disabled=cur>=L}
+function go(d){const n=cur+d;if(n<0||n>L)return;cur=n;show();if(cur===L)burst(.5,.6)}
+$('#nx').onclick=()=>go(1);$('#pv').onclick=()=>go(-1);
+st.onclick=e=>{if(cur===0){go(1);return}const r=st.getBoundingClientRect();go(e.clientX<r.left+r.width/2?-1:1)};
+let sx=null;st.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+st.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)go(d<0?1:-1);sx=null});
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)});
+show();
+// ====== intro ======
+$('#go').onclick=()=>{$('#start').classList.add('hide');$('#count').classList.remove('hide');
+ const t0=performance.now(),D=3800,num=$('#num');let last=-1;
+ (function f(n){const p=Math.min((n-t0)/D,1),v=Math.round(18*(1-Math.pow(1-p,4)));
+  if(v!==last){last=v;num.textContent=v}
+  if(p<1)requestAnimationFrame(f);else{num.classList.add('pop');burst(.5,.4);setTimeout(()=>burst(.2,.5),300);setTimeout(()=>burst(.8,.5),500);
+   setTimeout(()=>{$('#count').classList.add('hide');const h=$('#hb');h.classList.remove('hide');h.style.display='flex'},1400)}
+ })(t0)};
+$('#open').onclick=()=>{$('#intro').classList.add('hide');$('#bookScr').classList.remove('hide');burst(.5,.5)};
+// ====== confetti ======
+const cv=$('#cv'),cx=cv.getContext('2d');let ps=[],run=false;
+function rs(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio}rs();addEventListener('resize',rs);
+const cols=['#ff7eb6','#ffe066','#7fd3d6','#8fc6f0','#bff0c8','#fff','#ffb6d6'];
+function burst(x,y){for(let i=0;i<70;i++){const a=Math.random()*Math.PI*2,s=6+Math.random()*10;
+ ps.push({x:x*cv.width,y:y*cv.height,vx:Math.cos(a)*s*devicePixelRatio,vy:(Math.sin(a)*s-6)*devicePixelRatio,w:(6+Math.random()*8)*devicePixelRatio,c:cols[i%cols.length],r:Math.random()*6,vr:Math.random()*.4-.2,o:Math.random()<.3,l:110+Math.random()*60})}
+ if(!run){run=true;tick()}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);ps=ps.filter(p=>p.l>0);
+ for(const p of ps){p.vy+=.35*devicePixelRatio;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.l--;cx.save();cx.globalAlpha=Math.min(1,p.l/30);cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;
+  if(p.o){cx.beginPath();cx.arc(0,0,p.w/2,0,7);cx.fill()}else cx.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);cx.restore()}
+ if(ps.length)requestAnimationFrame(tick);else run=false}
+</script>
+</body>
+</html>
