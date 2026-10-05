@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Message } from '../../content/level1';
+import finalCat from '../../assets/final-cat-full.png';
 
 interface LeafProps {
   index: number;
@@ -17,12 +18,8 @@ export const Leaf: React.FC<LeafProps> = ({
   isFlipped,
   totalPages,
 }) => {
-  // Calculate the actual page numbers for this leaf
-  // Leaf 0 = cover (index -1) and page 1
-  // Leaf 1 = page 2 and page 3
-  // etc.
-  const frontPageNum = index === 0 ? 0 : index * 2;
-  const backPageNum = index === 0 ? 1 : index * 2 + 1;
+  const frontPageNum = index;
+  const backPageNum = index;
 
   return (
     <div
@@ -63,7 +60,7 @@ export const Leaf: React.FC<LeafProps> = ({
           transform: 'rotateY(180deg)',
         }}
       >
-        <PageContent message={backMessage} pageNumber={backPageNum} totalPages={totalPages} isCover={false} isBack={true} />
+      <PageContent message={backMessage} pageNumber={backPageNum} totalPages={totalPages} isCover={false} isBack={true} />
       </div>
     </div>
   );
@@ -78,7 +75,7 @@ const PageContent: React.FC<{
 }> = ({ message, pageNumber, totalPages, isCover, isBack }) => {
   return (
     <div
-      className='w-full h-full flex flex-col overflow-hidden'
+      className={`book-page ${isBack ? 'book-page-left' : 'book-page-right'} w-full h-full flex flex-col overflow-hidden`}
       style={{
         background: isCover ? 'linear-gradient(135deg, #fff3b0, #ffe1ef)' : '#fff8d6',
         border: '5px solid #7fd3d6',
@@ -153,20 +150,12 @@ const ContentPage: React.FC<{
   totalPages: number;
 }> = ({ message, pageNumber, totalPages }) => (
   <>
-    <div className='bg-teal text-white font-jua text-xs flex justify-between items-center px-3 py-1.5 flex-shrink-0'>
-      <span className='flex items-center gap-0.5'>
-        <span>● ●</span>
-        <span className='hidden sm:inline'>BIRTHDAY.EXE</span>
-      </span>
-      <span>{pageNumber} / {totalPages * 2}</span>
-    </div>
     <div
-      className='flex-1 px-3 py-3 font-gaegu text-xs leading-[26px] overflow-y-auto flex flex-col gap-1'
+      className={`book-page-copy ${pageNumber === totalPages ? 'book-page-copy--final' : ''} flex-1 px-3 py-3 font-gaegu text-xs leading-[26px] overflow-y-auto flex flex-col gap-1`}
       style={{
         background: 'repeating-linear-gradient(transparent 0 25px, #bfe6ea 25px 26px)',
         backgroundPosition: '0 12px',
         color: '#8a4a7a',
-        fontSize: 'clamp(12px, 3vw, 16px)',
       }}
     >
       {message.title && (
@@ -180,9 +169,12 @@ const ContentPage: React.FC<{
         </p>
       ))}
       {message.signature && (
-        <div className='mt-auto pt-1 text-right text-pink-bright font-gaegu text-xs'>
+        <div className={`mt-auto pt-1 text-right text-pink-bright font-gaegu text-xs ${pageNumber === totalPages ? 'final-page-signature' : ''}`}>
           {message.signature}
         </div>
+      )}
+      {pageNumber === totalPages && (
+        <img className='final-page-cat' src={finalCat} alt='' aria-hidden='true' />
       )}
     </div>
   </>

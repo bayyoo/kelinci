@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden">
-      <BackgroundAudio />
+      {screen !== "counting" && <BackgroundAudio />}
       <Confetti />
       <AllStickers />
 

@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { Leaf } from "./Leaf";
+import { useRef } from "react";
 import { content } from "../../content/level1";
 
 interface BookProps {
@@ -8,8 +9,9 @@ interface BookProps {
 
 export const Book: React.FC<BookProps> = ({ onClose }) => {
   const [currentLeaf, setCurrentLeaf] = useState(0);
+  const touchStartX = useRef<number | null>(null);
   const totalMessages = content.messages.length;
-  const totalLeaves = Math.ceil(totalMessages / 2);
+  const totalLeaves = totalMessages + 1;
 
   const handlePrevious = () => {
     if (currentLeaf > 0) {
@@ -30,21 +32,32 @@ export const Book: React.FC<BookProps> = ({ onClose }) => {
     }
   };
 
-  // Calculate which page user is viewing (1-indexed for display)
-  const displayPageNumber = currentLeaf === 0 ? "Sampul" : `${currentLeaf * 2} - ${Math.min(currentLeaf * 2 + 1, totalMessages)}`;
+  const displayPageNumber = currentLeaf === 0 ? "Sampul" : `${currentLeaf} / ${totalMessages}`;
 
   return (
     <>
       {/* Book Stage */}
       <div
-        className="book-container"
+        className={`book-container ${currentLeaf === 0 ? "book-cover" : "book-open"}`}
+        onTouchStart={(event) => {
+          touchStartX.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          const startX = touchStartX.current;
+          const endX = event.changedTouches[0]?.clientX;
+          touchStartX.current = null;
+
+          if (startX === null || endX === undefined || Math.abs(endX - startX) < 48) return;
+          if (endX < startX) handleNext();
+          else handlePrevious();
+        }}
         style={{
           position: "fixed",
           top: "50%",
           left: "50%",
-          transform: "translate(-50%, -50%)",
           perspective: 2000,
           transformStyle: "preserve-3d",
+          touchAction: "pan-y",
         }}
       >
         {/* Book Container */}
@@ -57,12 +70,10 @@ export const Book: React.FC<BookProps> = ({ onClose }) => {
           }}
         >
           {Array.from({ length: totalLeaves }).map((_, leafIndex) => {
-            const frontMessageIndex = leafIndex * 2;
-            const backMessageIndex = leafIndex * 2 + 1;
-            const frontMessage = content.messages[frontMessageIndex];
-            const backMessage = backMessageIndex < totalMessages 
-              ? content.messages[backMessageIndex] 
-              : { title: "♡", body: [""] };
+            const frontMessage = leafIndex === 0
+              ? { title: "", body: [] }
+              : content.messages[leafIndex - 1];
+            const backMessage = { title: "", body: [] };
 
             return (
               <Leaf
@@ -72,7 +83,7 @@ export const Book: React.FC<BookProps> = ({ onClose }) => {
                 frontMessage={frontMessage}
                 backMessage={backMessage}
                 isFlipped={leafIndex < currentLeaf}
-                totalPages={totalLeaves}
+                totalPages={totalMessages}
               />
             );
           })}
@@ -80,18 +91,7 @@ export const Book: React.FC<BookProps> = ({ onClose }) => {
       </div>
 
       {/* Navigation */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "40px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          zIndex: 100,
-        }}
-      >
+      <div className="book-navigation">
         <button
           className="w-12 h-12 rounded-full border-4 border-white bg-blue-soft text-white font-jua text-2xl shadow-[0_5px_0_#5f95c8] cursor-pointer transition-all active:translate-y-1 active:shadow-none disabled:opacity-35 disabled:cursor-not-allowed"
           onClick={handlePrevious}
@@ -99,7 +99,7 @@ export const Book: React.FC<BookProps> = ({ onClose }) => {
         >
           ◀
         </button>
-        <span className="tag">
+        <span className="tag page-indicator">
           {displayPageNumber}
         </span>
         <button

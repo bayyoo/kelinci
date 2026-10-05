@@ -77,6 +77,56 @@ body {
 .book-container {
   width: 800px;
   height: 500px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.book-container.book-cover {
+  transform: translate(-75%, -50%);
+}
+
+.book-navigation {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transform: translateX(-50%);
+}
+
+.page-indicator {
+  min-width: 88px;
+  padding: 7px 10px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.book-page-copy {
+  font-size: clamp(12px, 3vw, 16px);
+}
+
+.book-page-copy--final {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.final-page-cat {
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+  width: 34%;
+  max-height: 56%;
+  object-fit: contain;
+  object-position: bottom right;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 3px rgba(91, 79, 60, 0.28));
+}
+
+.final-page-signature {
+  padding-right: 35%;
 }
 
 /* Tablet - scale down like old code resize */
@@ -98,23 +148,67 @@ body {
 /* Mobile portrait - resize like old code (280x350 approach) */
 @media screen and (max-width: 640px) {
   .book-container {
-    width: 560px;
-    height: 400px;
+    width: min(640px, calc((100dvh - 185px) * 1.42));
+    height: min(450px, calc(100dvh - 185px));
+  }
+
+  /* Keep the full reading page visible, with only a quiet paper peek on the left. */
+  .book-container.book-open {
+    transform: translate(-75%, -50%);
+  }
+
+  .book-page-left .book-page-copy {
+    visibility: hidden;
+  }
+
+  .book-page-copy {
+    padding: 14px 16px;
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 27px;
+  }
+
+  .book-page-copy--final {
+    padding-bottom: 24px;
+  }
+
+  .final-page-cat {
+    right: 1%;
+    bottom: 1%;
+    width: 36%;
+  }
+
+  .book-page-copy p {
+    line-height: 27px;
+  }
+
+  .book-navigation {
+    bottom: max(20px, env(safe-area-inset-bottom, 0px));
+    gap: 12px;
   }
 }
 
 /* Small mobile - closer to old code 250x320 */
 @media screen and (max-width: 480px) {
-  .book-container {
-    width: 500px;
-    height: 360px;
+  .page-indicator {
+    min-width: 82px;
+    font-size: 14px;
   }
 }
 
 /* Very small screens */
 @media screen and (max-width: 380px) {
   .book-container {
-    width: 450px;
-    height: 340px;
+    width: min(560px, calc((100dvh - 175px) * 1.42));
+    height: min(400px, calc(100dvh - 175px));
+  }
+
+  .book-page-copy {
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 25px;
+  }
+
+  .book-page-copy p {
+    line-height: 25px;
   }
 }
