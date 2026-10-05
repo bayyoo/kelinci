@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Message } from '../../content/level1';
+import coverPhoto from '../../assets/cover-photo.png';
 import finalCat from '../../assets/final-cat-full.png';
 
 interface LeafProps {
@@ -116,7 +117,7 @@ const CoverPage: React.FC = () => (
   <div 
     className='flex-1 flex flex-col items-center justify-center gap-3 text-center p-6'
     style={{
-      backgroundImage: 'url(/src/assets/cover-photo.png)',
+        backgroundImage: `url(${coverPhoto})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       position: 'relative',
