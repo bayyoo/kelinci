@@ -44,6 +44,26 @@ export const Counter: React.FC<CounterProps> = ({ onComplete }) => {
       oscillator.stop(now + 0.08);
     };
 
+    const playFireworkPop = (pitch: number) => {
+      if (audioContext.state !== 'running') return;
+
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const now = audioContext.currentTime;
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(pitch, now);
+      oscillator.frequency.exponentialRampToValueAtTime(75, now + 0.2);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.035, now + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start(now);
+      oscillator.stop(now + 0.24);
+    };
+
     const animation = gsap.to(obj, {
       value: 18,
       duration: 3.8,
@@ -63,8 +83,15 @@ export const Counter: React.FC<CounterProps> = ({ onComplete }) => {
           numberRef.current.textContent = '18';
           numberRef.current.classList.add('animate-pop');
           (window as any).burstConfetti?.(0.5, 0.4);
-          setTimeout(() => (window as any).burstConfetti?.(0.2, 0.5), 300);
-          setTimeout(() => (window as any).burstConfetti?.(0.8, 0.5), 500);
+          playFireworkPop(170);
+          setTimeout(() => {
+            (window as any).burstConfetti?.(0.2, 0.5);
+            playFireworkPop(205);
+          }, 300);
+          setTimeout(() => {
+            (window as any).burstConfetti?.(0.8, 0.5);
+            playFireworkPop(185);
+          }, 500);
           setTimeout(onComplete, 1400);
         }
       },
