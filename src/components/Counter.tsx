@@ -44,24 +44,46 @@ export const Counter: React.FC<CounterProps> = ({ onComplete }) => {
       oscillator.stop(now + 0.08);
     };
 
-    const playFireworkPop = (pitch: number) => {
+    const playFireworkBoom = (pitch: number) => {
       if (audioContext.state !== 'running') return;
 
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
       const now = audioContext.currentTime;
+      const boom = audioContext.createOscillator();
+      const boomGain = audioContext.createGain();
+      const noise = audioContext.createBufferSource();
+      const noiseFilter = audioContext.createBiquadFilter();
+      const noiseGain = audioContext.createGain();
+      const noiseBuffer = audioContext.createBuffer(1, Math.floor(audioContext.sampleRate * 0.42), audioContext.sampleRate);
+      const noiseData = noiseBuffer.getChannelData(0);
 
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(pitch, now);
-      oscillator.frequency.exponentialRampToValueAtTime(75, now + 0.2);
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(0.035, now + 0.012);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      for (let index = 0; index < noiseData.length; index += 1) {
+        noiseData[index] = (Math.random() * 2 - 1) * (1 - index / noiseData.length);
+      }
 
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-      oscillator.start(now);
-      oscillator.stop(now + 0.24);
+      boom.type = 'sine';
+      boom.frequency.setValueAtTime(pitch, now);
+      boom.frequency.exponentialRampToValueAtTime(36, now + 0.48);
+      boomGain.gain.setValueAtTime(0.0001, now);
+      boomGain.gain.exponentialRampToValueAtTime(0.16, now + 0.008);
+      boomGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+
+      noise.buffer = noiseBuffer;
+      noiseFilter.type = 'lowpass';
+      noiseFilter.frequency.setValueAtTime(1800, now);
+      noiseFilter.frequency.exponentialRampToValueAtTime(280, now + 0.4);
+      noiseGain.gain.setValueAtTime(0.0001, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.2, now + 0.005);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+
+      boom.connect(boomGain);
+      boomGain.connect(audioContext.destination);
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(audioContext.destination);
+      boom.start(now);
+      noise.start(now);
+      boom.stop(now + 0.52);
+      noise.stop(now + 0.42);
     };
 
     const animation = gsap.to(obj, {
@@ -83,14 +105,14 @@ export const Counter: React.FC<CounterProps> = ({ onComplete }) => {
           numberRef.current.textContent = '18';
           numberRef.current.classList.add('animate-pop');
           (window as any).burstConfetti?.(0.5, 0.4);
-          playFireworkPop(170);
+          playFireworkBoom(110);
           setTimeout(() => {
             (window as any).burstConfetti?.(0.2, 0.5);
-            playFireworkPop(205);
+            playFireworkBoom(128);
           }, 300);
           setTimeout(() => {
             (window as any).burstConfetti?.(0.8, 0.5);
-            playFireworkPop(185);
+            playFireworkBoom(118);
           }, 500);
           setTimeout(onComplete, 1400);
         }
