@@ -9,147 +9,34 @@ export const content = {
   recipientName: 'Bayu',
   birthDate: '7 Oktober',
   messages: [
-    {
-      title: '',
-      body: [
-        'Selamat ulang tahunnn nabilahh 🥳🥳🥳',
-        'Makasih ya udh mau temanan sama gua sampe sekarang, udh setahun, ga kerasa ya setahun.. Hwgshehwha',
-        'Pokonya aku mau bilang makasih banyak banyak banyak banyak, karna udh mau kenalan, udh mau temenan sama aku, makasih juga udh rajin reply Sw pas itu..',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kalo ga gitu ga bakal sedeket ini deh. Jujur ga expect banget kamu bakal jadi orang yg sedeket kaya sekarang ini, karna dari awal juga aku kenal kamu rada judes..',
-        'Ga judes sih cuman beneran ga expect bakal kaya sekarang. Aku beneran bersyukur bisa kenal bahkan bisa temenan dan sedekat ini sama kamu.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kamu orang baik, makasih ya udah jadi orang baik, tapi kadang kamu ga baik ke diri sendiri juga sih, masih sering gaenakan, dan jadi ngorbanin diri sendiri gt.',
-        'Dibanyak kasus masih sering kaya gitu, yang dimana itu kan ga baik buat kamunya.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Sama kamu, kamu sempet cerita kan kaya dulu gapunya temen gt gt dan ya setelah denger beberapa dr cerita kamu aku juga sempet nyimpulin kalo kamu tuh kesepian.',
-        'Tapi gabakal sih ya sekarang kan udh 18 tahun, ya aku berharap next kamu bisa lebih merasa utuh, bisa ngerasa cukup sama diri sendiri.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kamu lagi sendiri dan ngerasa kesepian itu its okay banget ko, ya gaada yg tau kedepannya tapi kalo kamu ada di posisi itu nanti semangat ya.',
-        'Gapapa ko buat ngerasa kesepian justru emang itu harus di rasain malahan. Kamu bisa lakuin apapun itu sendiri tuh bisa banget.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Udah ngebuktiin itu, dari kamu sampe sekarang masih bertahan aja udh ngebuktiin dong kalo kamu bisa.',
-        'Ya mungkin juga ada beberapa yg nemenin tapi ya yang pasti ada sendiri sendirinya juga.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Minta maaf ya dengan semua hal buruk yg terjadi didalam hidup kamu, aku paham banget sih kenapa kamu bisa ngerasa kaya gitu karna kaya yg kamu sempet bilang ke aku.',
-        'Kamu dari dulu kecil sendiri trs bahkan sampe punya temen imajinasi.... 🥺🥺',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kamu punya temen banyakkk, kamu gampang bergaul, social butterfly lah, bangga banget dehh.',
-        'Banyak juga orang yang sayang sama kamu, aku juga ya jujur kagum bgt sama kamu.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Anaknya ceria, playful, ramah, videonya asik, nenangin bgt vibesnya sumpah.',
-        'Hal yg paling aku suka dari kamu tuh klo ngobrol sama kamu tuh bikin tenang anjr.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Yg terjadi di hidup kamu by, especially the bad things, aku minta maaf ya sayang kamu ngerasain dan ngelaluin hal seberat itu.',
-        'Dan keren nya apa coba, kamu bisa bertahan sampe sekarang anjr, itu keren banget.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kan ke kamu, kalo kamu tuh orangnya ceria, playful, fun gt gt ternyata ada sesuatu juga dibalik itu, malah aku kaget ko kamu bisa jadi anak yg se happy, fun, ceria sekarang.',
-        'Itu keren bgtttt, pokoknya kamu keren bangett wanita kuattttt.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Apresiasi kamu se banyak banyak nya dehh 🫠🫠',
-        'Makasih juga buat mama kamu karna udh ngelahirin anak yang punya hati sebaik kamu.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Bangettt yaa pantes aja anaknya itu wanita kuat, mamanya aja udh sekeren itu.',
-        'Makasih udah jadi orang baik ya, makasih udah jadi anak baik, makasih udah baik ke semua orang, makasih juga udah baik ke aku.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Banget ke aku makasih ya, banyak hal, banyak kalimat yg emg pengen banget ada orang ngomong gitu ke aku dan itu kamu.',
-        'Banyak hal yg aku masih ga familiar yg aku dapetin dari kamu jujur karna aku ga ngerasa dan ga nyangka ada orang yg ternyata bakal ngomong dan bakal ngelakuin itu ke aku 🫠🫠🫠🫠',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Kadang suka tb tb insecure, minder dan keliatan kaya gapunya self-worth, karna dr apa yg aku alamin aku ngerasa emg aku kaya gt.',
-        'Aku kadang juga masih sempet ga percaya kamu mau sama aku, masih sempet mikir ko bisa kamu mau gt gt, ko mau temenan.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Ini masalah diri sendiri juga sih tapi makasih ya udh ngebuat me feel much better, makasih banget yaa.',
-        'Ive never felt this way before, and honestly, I think this is the first time Ive ever truly felt what its like to be loved like this.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Jangan lupa juga baik ke diri sendiri ya? Good luck ya bby.',
-        'Semoga kamu dapetin apa yang kamu impiin dalam hidup kamu, semoga yg disemogakan tersemogakan.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Apapun itu selalu dipermudah and I hope life will always be kind to you ya by.',
-        'Tp aku yakin itu udh pasti sih secara kamu baik pasti dunia juga bakal baik ke kamu.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Yakin dan percaya kalo nanti di kedepannya kamu ada masalah ini itu, aku yakin banget sih kamu masih bisa tetep bertahan dan maju.',
-        'Ya karna aku tau kamu tuh wanita kuat, kamu hebat, kamu keren banget.',
-      ],
-    },
-    {
-      title: '',
-      body: [
-        'Someday you realize how amazing you actually are ☹️',
-        'Makasih buat semuanya ya laa, fi amanillah ya.',
-      ],
-      signature: '— Aku sayang banget sama kamu, selamat ulang tahunnnn 🥳❤️',
-    },
+    { title: '', body: ['Selamat ulang tahunnn nabilahh 🥳🥳🥳', 'Makasih ya udh mau temanan sama aku sampe sekarang... Pokonya aku mau bilang makasih banyak banyak banyak banyak, karna udh mau kenalan, udh mau temenan sama aku, makasih juga udh rajin reply Sw pas itu..'] },
+    { title: '', body: ['Soalnya kayanya kalo ga gitu ga bakal sedeket ini deh? Jujur ya sebenarnya aku ga ekspek banget kamu bakal jadi orang yg sedeket kaya sekarang ini, karna dari awal juga aku kenal kamu rada judes..', 'Ga judes sih tapi kaya beneran ga kepikiran aja, dan beneran ga ekspek bakal kaya sekarang. Aku beneran bersyukur banget sih.'] },
+    { title: '', body: ['Eh ini alay sih, alay ga sih, ga ya? Ga lah, pokonya ini serius tp. Aku beneran bersyukur bisa kenal bahkan bisa temenan dan sedekat ini sama kamu.', 'Aku seneng banget kamu tuh baik banget. Kamu orang baik, makasih ya udah jadi orang baik.'] },
+    { title: '', body: ['Tapi kadang kamu ga baik ke diri sendiri juga sih, masih sering gaenakan, dan jadi ngorbanin diri sendiri gt. Dibanyak kasus masih sering kaya gitu, yang dimana itu kan ga baik loh buat kamunya ck ck.', 'Trus juga aku beneran kagum sih sama kamu, dan akan selalu kagum sihh.'] },
+    { title: '', body: ['Kamu sempet cerita kan kaya dulu gapunya temen sendiri, agak diabaikan(?) gt gt. Ya setelah denger beberapa dr cerita kamu aku juga sempet nyimpulin kalo kamu tuh kesepian.', 'Trus juga dari apa yg aku denger di cerita kamu gt aku khawatir kamu gabakal bisa sendirian dan bakal selalu bergantung sama orang gt loh la.'] },
+    { title: '', body: ['Tp gabakal sih ya sekarang kan udh 18 tahun. Aku berharap next kamu bisa lebih merasa utuh, bisa ngerasa cukup sama diri sendiri.', 'Kalo suatu saat nanti kamu lagi sendiri dan ngerasa kesepian itu its okay banget ko. Ya gaada yg tau kedepannya tapi kalo kamu ada di posisi itu nanti semangat ya.'] },
+    { title: '', body: ['Dan gapapa ko buat ngerasa kesepian, justru emang itu harus dirasain malahan. Kamu bisa lakuin apapun itu sendiri tuh bisa banget.', 'Kamu juga sebenarnya udah ngebuktiin itu, dari kamu sampe sekarang masih bertahan aja udh ngebuktiin dong kalo kamu bisa.'] },
+    { title: '', body: ['Ya mungkin juga ada beberapa yg nemenin tapi ya yang pasti ada sendiri-sendiri nya juga kan.', 'Sebelumnya aku mau minta maaf ya dengan semua hal buruk yg terjadi didalam hidup kamu. Aku paham banget sih kenapa kamu bisa ngerasa kaya gitu karna kaya yg kamu sempet bilang ke aku.'] },
+    { title: '', body: ['Kamu dari dulu kecil sendiri trs bahkan sampe punya temen imajinasi.... 🥺🥺', 'Tapi sekarang apa? Kamu punya temen banyakkk, banyak orang seneng temenan sama kamu. Kamu gampang bergaul, social butterfly lah, bangga banget dehh pokonya.'] },
+    { title: '', body: ['Banyak juga orang yang sayang sama kamu. Kamu tuh ya kayaa kamu tuh kan anaknya ceria, playful, ramah, vibesnya asik, nenanginn bgt vibesnya sumpah.', 'Hal yg paling aku suka dari kamu tuh klo ngobrol sama kamu tuh bikin tenang anjr😭😭 favoo.'] },
+    { title: '', body: ['Trus pokonya buat semua yg terjadi di hidup kamu by, especially the bad things, aku minta maaf ya sayang kamu ngerasain dan ngelaluin hal seberat itu.', 'Dan keren nya apa coba, kamu bisa bertahan sampe sekarang anjr, itu keren banget.'] },
+    { title: '', body: ['Kamu tuh orangnya ceria, playful, fun gt gt ternyata ada sesuatu juga dibalik itu dan kamu masih bisa keliat seceria itu. Ini first impression aku loh ya.', 'Aku malah ga nyangka kamu ngelaluin hal seberat itu, malah aku kaget ko kamu bisa jadi anak yg se happy, fun, ceria sekarang.'] },
+    { title: '', body: ['Itu keren bgtttt, pokoknya kamu keren bangett wanita kuattttt🥹', 'Aku beneran mau apresiasi kamu sebanyak-banyaknya dehh🫠🫠. Makasih juga buat mama kamu karna udh ngelahirin anak yang punya hati sebaik kamu, dan udah bisa kuat sampe sekarang ngebesarin kamu.'] },
+    { title: '', body: ['Mama kamu juga ga kalah keren sih, ya pantes aja anaknya sekuat dan sehebat ini😙', 'Aku beneran gamau berenti ngomong makasih sebanyak-banyaknya dh ke kamu. Makasih udah jadi orang baik ya, makasih udh jadi anak baik, makasih udh baik ke semua orang, makasih juga udh baik ke aku ke semua MAKASIUSHSBBEJ.'] },
+    { title: '', body: ['Kamu baik banget ke aku makasih ya. Banyak hal atau kalimat yg emg aku tuh pengen banget ada orang ngomong gitu ke aku dan itu tuh dateng dari kamu. Aku seneng banget🫠🫠🫠🫠', 'Makasih ya sayang, makasih.... Kamu mungkin mikir lebay atau berlebihan tapi ini beneran ngebantu aku bgt cuk. Kamu gabakal tau seberapa berartinya itu anjr buat aku.'] },
+    { title: '', body: ['Pokonya makasih ya.. Sebenarnya juga banyak hal yg aku masih ga familiar yg aku dapetin dari kamu, karna aku ga ngerasa dan ga nyangka ada orang yg ternyata bakal ngomong dan bakal ngelakuin itu ke aku🫠🫠🫠🫠', 'Maaf ya kalo aku kadang suka tb tb insecure minder dan keliatan kaya gapunya self worth, karna dari apa yg aku alamin aku ngerasa emg aku udh seharusnya pantes kaya gitu.'] },
+    { title: '', body: ['Aku kadang juga masih sempet gapercaya kamu mau sama aku, masih sempet mikir ko bisa kamu mau gt gt, ko mau temenan.', 'Ya sebenarnya ini masalah diri sendiri juga sih tapi makasih ya udh ngebuat gua ngerasa jauh lebih baik, makasih banget yaa..'] },
+    { title: '', body: ['Aku ngerasa disayang banget sama kamu for the first time in my life to be loved like this.. especially sama cewe kaya kamu cukk, kaya kamu by, KAMU LOHH, how lucky i am????🥲😩☹️', 'Oiya sama kamu udh baik ke banyak orang jangan lupa juga buat baik ke diri sendiri ya? Pls jadi lebih baik lagi ya sayang?'] },
+    { title: '', body: ['Semoga di umur kamu yg baru ini kamu bisa menjadi orang yg lebih baik lagi. Semoga kebiasaan atau hal apapun yg jelek-jelek dari kamu itu semoga bisa hilang dan kamu jadi semakin lebih baik.', 'Kaya kurang-kurangin lah gaenakan, kamu juga punya diri kamu sayang. Kamu boleh baik ke semua orang ko tapi kamu gaboleh jahat ke diri sendiri, itu kesalahan berfikir.'] },
+    { title: '', body: ['Kamu juga tau harusnya kalo kamu tuh orang baik jadi kurangin lah terlalu peduli sama penilaian orang tentang kamu. Kamu gaperlu cape-cape ngejelasin kesalahpahaman yg bahkan bukan kamu yang buat sayang.', 'Biarin mreka salah tentang kamu, biarin, gaada yg harus dibuktiin. Yang cuma bisa kamu lakuin apa coba, ya yaudah, tetep jadi kamu aja, tetep jadi orang baik aja.'] },
+    { title: '', body: ['"Tapi kan mreka nganggep aku jahat" bodoamat, itu diluar kendali. Yaudah, kamu loh udh baik ke mreka sayang, jadi plis ya?', 'Semangat ok, pelan-pelan isoke gaa harus tiba-tiba besok kamu wajib jd lebih baik kan engga. Yang penting kamu udh mengusahakan setiap harinya.'] },
+    { title: '', body: ['Pokonya semangattt doa yg terbaik buat kamu sayang. Semoga kamu dapetin semua yang kamu impiin dalam hidup kamu ya, semoga yg disemogakan tersemogakan.', 'Pokonya semoga apapun itu selalu dipermudah and i hope life will always be kind to u ya by. Tp aku yakin itu udh pasti sih secara kamu baik kan, pasti dunia juga bakal baik ke kamu.'] },
+    { title: '', body: ['Aku juga bisa yakin dan percaya kalo nanti di kedepannya misal kamu ada masalah ini itu, aku yakin banget sih kamu masih bisa tetep bertahan dan maju.', 'Ya karna aku tau kamu tuh wanita kuat. Pokonya semangat ya sayang, kamu hebat loh, kamu kuat loh, kamu keren loh, kamu keren bangettttt.'] },
+    { title: '', body: ['And i really hope someday u realize how amazing u actually are by☹️ Karna jujur kesel banget kalo kamu lagi insecure gt, KARNA KAMU TUHH GAPERLU INSECURE ANJR malah orang yg insecure sama kamu cukkk😭😭', 'Know ur worth by, apa yang bikin kamu ngerasa kurang coba? Stop bandingin diri kamu sama orang lain ya sayang.'] },
+    { title: '', body: ['I’m so proud to have you and I love you just the way you are, so please start loving yourself too oky bby???, tolong ya pls bgt ini mah, stop ngecilin nilai diri kamu sendiri.', 'Kalo kamu lupa seberapa kerennya kamu, seberapa hebatnya kamu, seberapa WAHHHHH nya kamu, pas kamu lagi ngerasa insecure langsung aja cerita dan omongin ke aku ok?'] },
+    { title: '', body: ['Aku yang bakal urutin 189289 alesan kenapa kamu tuh permata, kamu tuh berlian, kamu tuh luar biasa hebat, keren, bidadari. NAHH jangan lupain itu juga.', 'Inget kamu tuh di bumi cuman lg menjalankan misi aje, sebenarnya ya kamu kan jatuh dri syurga sayang.'] },
+    { title: '', body: ['Makasih ya udh ngebuat Ciracas menjadi lebih indah, makasih udh membuat Pulau Pari menjadi lebih indah, makasih juga udh rela bersekolah di Zelga demi berbaur sama manusia🥺🥺🥺 effort bgt woii.', 'Pkoknya sekali lagi makasih banyak ya sayang buat semuanya, makasih udh dateng, makasih udh mau kenal aku, makasih udh mau temenan sama aku.'] },
+    { title: '', body: ['Fii amanillah ya sayang, di mana pun kamu berada, aku berdoa kamu selalu dijaga sama Allah dan dikelilingi hal-hal baik🙁🙁🤍🤍🤍', 'Aku sayang banget sama kamu.... Always be happy ya bby, kamu harus bahagia terus ya walau bagaimanapun nanti.'] },
+    { title: '', body: ['Makasih udah lahir ke dunia ini dan jadi orang yang sangat berarti buat aku. Semoga dunia selalu ramah sama kamu ya sayang.', 'Selamat ulang tahunn nabilah sayangg 🥳🥳🥳🤍🤍🤍🤍'], signature: '— Aku sayang banget sama kamu, selalu.' },
   ] as Message[],
 };
