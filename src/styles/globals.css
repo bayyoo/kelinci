@@ -105,7 +105,54 @@ body {
 }
 
 .book-page-copy {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 12px;
+  --lh: 26px;
+  --pt: 12px;
   font-size: clamp(12px, 3vw, 16px);
+  line-height: var(--lh);
+  color: #8a4a7a;
+  background-color: #fff8d6;
+  background-image: repeating-linear-gradient(
+    transparent 0 calc(var(--lh) - 1px),
+    #bfe6ea calc(var(--lh) - 1px) var(--lh)
+  );
+  background-position: 0 var(--pt);
+  background-repeat: repeat;
+}
+
+.book-page-copy > * {
+  flex-shrink: 0;
+}
+
+.page-title {
+  margin: 0;
+  font-family: 'Jua', cursive;
+  font-weight: 400;
+  color: #ff6fae;
+  font-size: 1.15em;
+  line-height: var(--lh);
+}
+
+.page-para {
+  margin: 0;
+  color: #8a4a7a;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.page-para + .page-para {
+  margin-top: var(--lh);
+}
+
+.page-sign {
+  padding-top: var(--lh);
+  text-align: right;
+  color: #ff6fae;
+  font-size: 0.95em;
+  line-height: var(--lh);
 }
 
 .book-page-copy--final {
@@ -163,22 +210,15 @@ body {
 
   .book-page-copy {
     padding: 14px 16px;
+    --lh: 27px;
+    --pt: 14px;
     font-size: clamp(14px, 3.8vw, 17px);
-    line-height: 27px;
-  }
-
-  .book-page-copy--final {
-    padding-bottom: 24px;
   }
 
   .final-page-cat {
     right: 1%;
     bottom: 1%;
     width: 36%;
-  }
-
-  .book-page-copy p {
-    line-height: 27px;
   }
 
   .book-navigation {
@@ -204,11 +244,8 @@ body {
 
   .book-page-copy {
     padding: 12px 14px;
+    --lh: 25px;
+    --pt: 12px;
     font-size: 14px;
-    line-height: 25px;
-  }
-
-  .book-page-copy p {
-    line-height: 25px;
   }
 }

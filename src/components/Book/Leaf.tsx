@@ -1,27 +1,22 @@
 ﻿import React from 'react';
-import { Message } from '../../content/level1';
+import { Block } from './blocks';
 import coverPhoto from '../../assets/cover-photo.png';
 import finalCat from '../../assets/final-cat-full.png';
 
+export type PageKind =
+  | { kind: 'cover' }
+  | { kind: 'empty' }
+  | { kind: 'content'; blocks: Block[] };
+
 interface LeafProps {
   index: number;
-  currentPage: number;
-  frontMessage: Message;
-  backMessage: Message;
+  front: PageKind;
+  back: PageKind;
   isFlipped: boolean;
   totalPages: number;
 }
 
-export const Leaf: React.FC<LeafProps> = ({
-  index,
-  frontMessage,
-  backMessage,
-  isFlipped,
-  totalPages,
-}) => {
-  const frontPageNum = index;
-  const backPageNum = index;
-
+export const Leaf: React.FC<LeafProps> = ({ index, front, back, isFlipped, totalPages }) => {
   return (
     <div
       style={{
@@ -47,7 +42,7 @@ export const Leaf: React.FC<LeafProps> = ({
           WebkitBackfaceVisibility: 'hidden',
         }}
       >
-        <PageContent message={frontMessage} pageNumber={frontPageNum} totalPages={totalPages} isCover={index === 0} isBack={false} />
+        <PageContent page={front} isBack={false} />
       </div>
 
       {/* Back */}
@@ -61,19 +56,17 @@ export const Leaf: React.FC<LeafProps> = ({
           transform: 'rotateY(180deg)',
         }}
       >
-      <PageContent message={backMessage} pageNumber={backPageNum} totalPages={totalPages} isCover={false} isBack={true} />
+        <PageContent page={back} isBack={true} />
       </div>
     </div>
   );
 };
 
-const PageContent: React.FC<{
-  message: Message;
-  pageNumber: number;
-  totalPages: number;
-  isCover: boolean;
-  isBack: boolean;
-}> = ({ message, pageNumber, totalPages, isCover, isBack }) => {
+const PageContent: React.FC<{ page: PageKind; isBack: boolean }> = ({ page, isBack }) => {
+  const isCover = page.kind === 'cover';
+  const isContent = page.kind === 'content';
+  const isFinal = isContent && page.blocks.some((block) => block.type === 'sign');
+
   return (
     <div
       className={`book-page ${isBack ? 'book-page-left' : 'book-page-right'} w-full h-full flex flex-col overflow-hidden`}
@@ -83,18 +76,16 @@ const PageContent: React.FC<{
         borderRadius: isBack ? '26px 3px 3px 26px' : '3px 26px 26px 3px',
         borderLeftWidth: isBack ? '5px' : '3px',
         borderRightWidth: isBack ? '3px' : '5px',
-        boxShadow: isBack 
+        boxShadow: isBack
           ? 'inset -300px 0 80px rgba(0,0,0,0.08), -3px 0 8px rgba(91, 179, 184, 0.4)'
           : 'inset 300px 0 80px rgba(0,0,0,0.08), 3px 0 8px rgba(91, 179, 184, 0.4)',
         position: 'relative',
       }}
     >
-      {isCover ? (
-        <CoverPage />
-      ) : message.body.length === 0 ? (
-        <DecoPage message={message} />
-      ) : (
-        <ContentPage message={message} pageNumber={pageNumber} totalPages={totalPages} />
+      {page.kind === 'cover' && <CoverPage />}
+      {page.kind === 'empty' && <EmptyPage />}
+      {isContent && (
+        <ContentPage blocks={page.blocks} isFinal={isFinal} />
       )}
     </div>
   );
@@ -114,10 +105,10 @@ const TofuSVG = ({ size = 80 }: { size?: number }) => (
 );
 
 const CoverPage: React.FC = () => (
-  <div 
+  <div
     className='flex-1 flex flex-col items-center justify-center gap-3 text-center p-6'
     style={{
-        backgroundImage: `url(${coverPhoto})`,
+      backgroundImage: `url(${coverPhoto})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       position: 'relative',
@@ -134,49 +125,39 @@ const CoverPage: React.FC = () => (
   </div>
 );
 
-const DecoPage: React.FC<{ message: Message }> = ({ message }) => (
-  <div className='flex-1 flex flex-col gap-3 p-5'>
+const EmptyPage: React.FC = () => (
+  <div className='flex-1 flex flex-col items-center justify-center p-5'>
     <TofuSVG size={70} />
-    {message.body.map((paragraph, i) => (
-      <p key={i} className='font-gaegu text-purple text-xs leading-relaxed'>
-        {paragraph}
-      </p>
-    ))}
   </div>
 );
 
-const ContentPage: React.FC<{
-  message: Message;
-  pageNumber: number;
-  totalPages: number;
-}> = ({ message, pageNumber, totalPages }) => (
-  <>
+const ContentPage: React.FC<{ blocks: Block[]; isFinal: boolean }> = ({ blocks, isFinal }) => {
+  return (
     <div
-      className={`book-page-copy ${pageNumber === totalPages ? 'book-page-copy--final' : ''} flex-1 px-3 py-3 font-gaegu text-xs leading-[26px] overflow-y-auto flex flex-col gap-1`}
-      style={{
-        background: 'repeating-linear-gradient(transparent 0 25px, #bfe6ea 25px 26px)',
-        backgroundPosition: '0 12px',
-        color: '#8a4a7a',
-      }}
+      className={`book-page-copy ${isFinal ? 'book-page-copy--final' : ''} flex-1 flex flex-col overflow-hidden font-gaegu`}
     >
-      {message.title && (
-        <h2 className='font-jua font-normal text-pink-bright text-sm leading-tight mb-1'>
-          {message.title}
-        </h2>
-      )}
-      {message.body.map((paragraph, i) => (
-        <p key={i} className='m-0 leading-[26px] text-purple break-words'>
-          {paragraph}
-        </p>
-      ))}
-      {message.signature && (
-        <div className={`mt-auto pt-1 text-right text-pink-bright font-gaegu text-xs ${pageNumber === totalPages ? 'final-page-signature' : ''}`}>
-          {message.signature}
-        </div>
-      )}
-      {pageNumber === totalPages && (
-        <img className='final-page-cat' src={finalCat} alt='' aria-hidden='true' />
-      )}
+      {blocks.map((block, i) => {
+        if (block.type === 'title') {
+          return (
+            <h2 key={i} className='page-title'>
+              {block.text}
+            </h2>
+          );
+        }
+        if (block.type === 'sign') {
+          return (
+            <div key={i} className='page-sign final-page-signature'>
+              {block.text}
+            </div>
+          );
+        }
+        return (
+          <p key={i} className='page-para'>
+            {block.text}
+          </p>
+        );
+      })}
+      {isFinal && <img className='final-page-cat' src={finalCat} alt='' aria-hidden='true' />}
     </div>
-  </>
-);
+  );
+};
